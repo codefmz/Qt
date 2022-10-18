@@ -101,10 +101,30 @@ Widget::Widget(QWidget *parent)
 
     connect(treeView, SIGNAL(clicked(QModelIndex)), listView, SLOT(setRootIndex(QModelIndex)));
     connect(treeView, SIGNAL(clicked(QModelIndex)), tableView, SLOT(setRootIndex(QModelIndex)));
+
+    connect(treeView, SIGNAL(clicked(QModelIndex)), this, SLOT(on_treeView_clicked(QModelIndex)));
+
 }
 
 Widget::~Widget()
 {
     delete ui;
+}
+
+void Widget::on_treeView_clicked(QModelIndex index)
+{
+    dirCkBox->setChecked(systemModel->isDir(index));
+    pathLabel->setText(systemModel->filePath(index));
+    nameLabel->setText(systemModel->fileName(index));
+    fileFolderLabel->setText(systemModel->type(index));
+    int size = systemModel->size(index) / 1024;
+    if(size < 1024)
+    {
+        sizeLabel->setText(QString("<b>%1</b> KB").arg(size));
+    }else
+    {
+
+        sizeLabel->setText(QString::asprintf("<b>%.1f</b> MB", size / 1024.0));
+    }
 }
 

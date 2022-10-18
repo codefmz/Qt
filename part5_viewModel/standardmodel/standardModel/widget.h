@@ -37,5 +37,8 @@ private:
     QLabel * pathLabel;
 
     QFileSystemModel * systemModel;
+
+public slots:
+    void on_treeView_clicked(QModelIndex modelIndex);
 };
 #endif // WIDGET_H
