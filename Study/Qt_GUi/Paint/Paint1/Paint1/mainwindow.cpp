@@ -16,7 +16,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::paintEvent(QPaintEvent * event)
 {
+
+
+
     QPainter textPainter(this);
+
+
+
     textPainter.setFont(QFont("Times", 14, QFont::Bold));
     textPainter.drawText(QPoint(20, 30), "Testing");
 
@@ -47,5 +53,13 @@ void MainWindow::paintEvent(QPaintEvent * event)
     Qt::SolidLine, Qt::FlatCap, Qt::MiterJoin));
     ellipsePathPainter.setBrush(QColor(122, 163, 39));
     ellipsePathPainter.drawPath(ellipsePath);
+
+    QPainter imagePainter(this);
+    imagePainter.setWindow(-100,100,200,200);
+    QImage image;
+    image.load(":/res/view.jpg");
+    image.scaled(QSize(20,20));
+    imagePainter.drawImage(QPoint(0,10), image);
+//    imagePainter.drawPicture()
 }
 
