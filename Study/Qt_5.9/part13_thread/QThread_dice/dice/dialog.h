@@ -1,4 +1,4 @@
-#ifndef DIALOG_H
+﻿#ifndef DIALOG_H
 #define DIALOG_H
 
 #include <QDialog>
@@ -29,5 +29,9 @@ private slots:
     void on_threadAFinished();
 
     void on_btnStartThread_clicked();
+    void on_btnStopThread_clicked();
+    void on_btnDiceBegin_clicked();
+    void on_btnDiceEnd_clicked();
+    void on_btnClear_clicked();
 };
 #endif // DIALOG_H

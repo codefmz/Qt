@@ -85,7 +85,7 @@
      <x>0</x>
      <y>0</y>
      <width>926</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
@@ -129,7 +129,7 @@
   </action>
   <action name="actSave">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="icon">
     <iconset resource="res.qrc">
@@ -144,7 +144,7 @@
   </action>
   <action name="actAppend">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="icon">
     <iconset resource="res.qrc">
@@ -159,7 +159,7 @@
   </action>
   <action name="actInsert">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="icon">
     <iconset resource="res.qrc">
@@ -174,7 +174,7 @@
   </action>
   <action name="actDelete">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="icon">
     <iconset resource="res.qrc">
