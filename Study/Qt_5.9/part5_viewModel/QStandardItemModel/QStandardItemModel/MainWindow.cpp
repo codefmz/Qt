@@ -222,7 +222,7 @@ void MainWindow::on_actSave_triggered()
     }
     QTextStream textStream(&file);
     QStandardItem * aItem;
-    int i, j;
+    int i;
     QString str;
     ui->plainTextEdit->clear();
     //获取表头数据
@@ -254,5 +254,46 @@ void MainWindow::on_actSave_triggered()
         ui->plainTextEdit->appendPlainText(str);
         textStream << str << "\n";
     }
+}
+
+
+void MainWindow::on_actModelData_triggered()
+{
+    qDebug() << "MainWindow::on_actModelData_triggered";
+    ui->plainTextEdit->clear();
+    //获取表头数据
+    QStandardItem * aItem;
+    int i;
+    QString str;
+    ui->plainTextEdit->clear();
+    //获取表头数据
+    for(i = 0; i < theModel->columnCount();i++)
+    {
+        aItem = theModel->horizontalHeaderItem(i);
+        str = str + aItem->text() + "\t\t";
+    }
+    ui->plainTextEdit->appendPlainText(str);
+    //获取内容
+    for(i = 0; i < theModel->rowCount(); i++)
+    {
+        str = "";
+        int j = 0;
+        for(j = 0; j < theModel->columnCount() - 1; j++)
+        {
+            aItem  = theModel->item(i, j);
+            str = str + aItem->text() + QString::asprintf("\t\t");
+        }
+        aItem = theModel->item(i,j);
+        if(aItem->checkState() == Qt::Checked)
+        {
+            str += "1";
+        }else
+        {
+            str += "0";
+        }
+        ui->plainTextEdit->appendPlainText(str);
+    }
+
+
 }
 
