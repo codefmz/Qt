@@ -4,7 +4,6 @@
 DateDelegate::DateDelegate(QObject *parent)
     : QItemDelegate{parent}
 {
-
 }
 
 QWidget *DateDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const
