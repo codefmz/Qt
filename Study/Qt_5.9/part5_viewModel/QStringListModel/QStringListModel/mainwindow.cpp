@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -68,6 +68,7 @@ void MainWindow::on_btnListClear_clicked()
 void MainWindow::on_btnTextClear_clicked()
 {
     ui->plainTextEdit->clear();
+
 }
 
 
@@ -84,6 +85,7 @@ void MainWindow::on_btnTextImport_clicked()
 
 void MainWindow::on_listView_clicked(const QModelIndex &index)
 {
+    ui->LabInfo->adjustSize();   //自适应大小
     ui->LabInfo->setText(QString::asprintf("当前条目: row = %d, cloumn = %d", index.row(), index.column()));
 }
 

@@ -1,5 +1,4 @@
 ﻿#include "DiceThread.h"
-
 DiceThread::DiceThread()
 {
 
@@ -21,6 +20,18 @@ void DiceThread::stopThread()
     m_stop = true;
 }
 
+bool DiceThread::readValue(int *tmpSeq, int *tmpValue)
+{
+    if(mutex.tryLock())
+    {
+        *tmpSeq = m_seq;
+        *tmpValue = m_diceValue;
+        mutex.unlock();
+        return true;
+    }
+    return false;
+}
+
 void DiceThread::run()
 {
     m_stop = false;
@@ -30,10 +41,12 @@ void DiceThread::run()
     {
        if(!m_paused)
        {
+          QMutexLocker locker(&mutex);
           m_diceValue = qrand() % 6 + 1;
           m_seq++;
-
+          qDebug().nospace() << __FILE__ << __LINE__ << __FUNCTION__ <<" -- ";
           emit newValued(m_seq, m_diceValue);
+          qDebug().nospace() << __FILE__ << __LINE__ << __FUNCTION__ <<" -- ";
        }
        msleep(50); //线程休眠500ms
     }

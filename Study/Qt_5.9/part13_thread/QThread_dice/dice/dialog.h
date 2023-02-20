@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <DiceThread.h>
 #include <QDebug>
+#include <QTimer>
 QT_BEGIN_NAMESPACE
 
 #if _MSC_VER >= 1600    //解决msvc中文乱码的问题
@@ -23,10 +24,14 @@ public:
 private:
     Ui::Dialog *ui;
     DiceThread diceThread;
+    QTimer mTimer;
+    int mSeq;
 private slots:
     void on_threadNewValue(int seq, int  diceValue);
     void on_threadAStarted();
     void on_threadAFinished();
+
+    void onTimeOut(); //定时其处理槽函数
 
     void on_btnStartThread_clicked();
     void on_btnStopThread_clicked();

@@ -11,14 +11,20 @@ CONFIG += c++17
 SOURCES += \
     ComboDelegate.cpp \
     DateDelegate.cpp \
+    ItemDelegate.cpp \
     SpinboxDelegate.cpp \
+    StringHandler.cpp \
+    TreeView.cpp \
     main.cpp \
     Widget.cpp
 
 HEADERS += \
     ComboDelegate.h \
     DateDelegate.h \
+    ItemDelegate.h \
     SpinboxDelegate.h \
+    StringHandler.h \
+    TreeView.h \
     Widget.h
 
 # Default rules for deployment.

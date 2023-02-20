@@ -1,4 +1,4 @@
-#include "ComboDelegate.h"
+﻿#include "ComboDelegate.h"
 #include "QComboBox"
 ComboDelegate::ComboDelegate(QObject *parent)
     : QItemDelegate{parent}
@@ -29,9 +29,9 @@ void ComboDelegate::setEditorData(QWidget *editor, const QModelIndex &index) con
 
 void ComboDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
 {
-   QComboBox * box = static_cast<QComboBox*>(editor);
-   QString str = box->currentText();
-   model->setData(index, str);
+    QComboBox * box = static_cast<QComboBox*>(editor);
+    QString str = box->currentText();
+    model->setData(index, str);
 }
 
 void ComboDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index) const

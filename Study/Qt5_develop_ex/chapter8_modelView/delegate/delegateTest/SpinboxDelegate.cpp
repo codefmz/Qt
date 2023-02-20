@@ -1,4 +1,4 @@
-#include "SpinboxDelegate.h"
+﻿#include "SpinboxDelegate.h"
 #include "QSpinBox"
 SpinboxDelegate::SpinboxDelegate(QObject *parent)
     : QItemDelegate{parent}
@@ -8,6 +8,7 @@ SpinboxDelegate::SpinboxDelegate(QObject *parent)
 
 QWidget *SpinboxDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
+
     QSpinBox * spinBox = new QSpinBox(parent);
     spinBox->setRange(0,1000000000);
     spinBox->setSingleStep(1000);

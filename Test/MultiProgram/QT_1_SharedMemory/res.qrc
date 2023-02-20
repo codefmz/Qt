@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Image/arrow-up-circle.png</file>
+        <file>Image/ashbin.png</file>
+        <file>Image/direction-down-circle.png</file>
+        <file>Image/help-filling.png</file>
+        <file>Image/picture-filling.png</file>
+        <file>Image/picture.png</file>
+        <file>Image/1.jpg</file>
+        <file>zhouxuan.ico</file>
+    </qresource>
+</RCC>

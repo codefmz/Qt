@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -62,10 +62,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::initGraphics()
 {
-    QRectF rect(-200, -100, 400, 200);
+    QRectF rect(-100, -100, 200, 200);
     graphScene = new QGraphicsScene(rect);
+
     //scene 与 graphicsview 关联
     ui->graphicsView->setScene(graphScene);
+    ui->graphicsView->scale(1,-1);
     QGraphicsRectItem  * item = new QGraphicsRectItem(rect);
     item->setFlags(QGraphicsItem::ItemIsFocusable | QGraphicsItem::ItemIsSelectable);
     QPen pen;

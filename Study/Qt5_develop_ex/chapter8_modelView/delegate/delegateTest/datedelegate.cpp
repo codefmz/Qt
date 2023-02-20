@@ -1,6 +1,7 @@
-#include "DateDelegate.h"
+﻿#include "DateDelegate.h"
 #include "QDateTimeEdit"
 #include "QDebug"
+#include "QApplication"
 DateDelegate::DateDelegate(QObject *parent)
     : QItemDelegate{parent}
 {
@@ -39,4 +40,40 @@ void DateDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionViewI
 {
     qDebug() << "DateDelegate::updateEditorGeometry";
     editor->setGeometry(option.rect);
+}
+
+void DateDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+{
+    qDebug() << "DateDelegate::paint";
+    QStyleOption comBoxOption;
+    comBoxOption.initFrom(option.widget);
+    painter->save();
+
+    QPen pen;
+    pen.setColor(Qt::black);
+//    for (int i = 1; i < 5; ++i)
+//    {
+//        starPolygon << 10 * QPointF(0.5 + 0.5 * std::cos(0.8 * i * 3.14),
+//                                    0.5 + 0.5 * std::sin(0.8 * i * 3.14));
+//    }
+    pen.setWidth(2);
+    painter->setPen(pen);
+    QVector<QPointF> vct(3);
+    vct << QPointF(0,0) << QPointF(6, 10) << QPointF(20,0);
+    QRect rt = option.rect;
+    painter->translate(rt.right() - 20, rt.center().ry());
+    painter->setRenderHint(QPainter::Antialiasing, true);
+//    painter->setPen(Qt::SolidLine);
+    painter->drawLine(QPointF(0,0), QPointF(6, 6));
+    painter->drawLine(QPointF(6,6), QPointF(12, 0));
+    painter->restore();
+
+//    QString dateStr = index.model()->data(index).toString();
+//    comBoxOption.text = dateStr;
+//    comBoxOption.rect = option.rect;
+
+//    QApplication::style()->drawControl(QStyle::CE_PushButton, &comBoxOption, painter);
+
+    QItemDelegate::paint(painter, option, index);
+
 }

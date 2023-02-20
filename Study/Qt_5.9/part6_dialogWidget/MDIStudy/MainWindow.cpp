@@ -3,15 +3,36 @@
 
 static int num = 0;
 
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     mdiArea = new MdiArea;
+    mdiArea->setViewMode(QMdiArea::TabbedView);
     setCentralWidget(mdiArea);
     setWindowState(Qt::WindowMaximized);
 
+    QList<QTabBar*> tabList = mdiArea->findChildren<QTabBar*>();
+    qDebug() << " tabList size() = " << tabList.size();
+    QTabBar * tabBar = tabList.at(0);
+    tabBar->installEventFilter(mdiArea);
+    tabBar->setExpanding(false);
+    tabBar->setTabsClosable(true);
+//    connect(tabBar, &QTabBar::currentChanged, this, [=](int index){
+//        QWidget * tabBar->tabButton(index, QTabBar::LeftSide);
+//        if(index != tabBar->currentIndex())
+//        {
+////            qDebug()
+////            tabBar->setCurrentIndex(tabBar->currentIndex());
+//        }
+////        qDebug() << tabBar->count();
+////        tabBar->setTabEnabled(index, false);
+////        QString tabText =
+////        qDebug() << " currendChanged --  text = " << tabBar->tabText(index);
+//    });
 }
 
 MainWindow::~MainWindow()
@@ -27,6 +48,7 @@ void MainWindow::on_actDoc_New_triggered()
     subWindow->setWindowIcon(QIcon(":/images/images/3.ico"));
     subWindow->setWindowTitle(QString::number(num++));
     formDoc->show();
+
 }
 
 
@@ -108,3 +130,20 @@ void MainWindow::on_actCloseALL_triggered()
 
 
 
+
+//bool Object::eventFilter(QObject *watched, QEvent *event)
+//{
+
+//    if(watched == this->findChildren<QTabBar*>().at(0))
+//    {
+
+//            if(event->type() == QEvent::MouseButtonPress)
+//            {
+//                qDebug() << "MdiArea::eventFilter";
+//                event->accept();
+//                return true;
+//            }
+//    }
+
+//     return QObject::eventFilter(watched,event);
+//}

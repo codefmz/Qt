@@ -13,6 +13,12 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+//class Object :public QObject
+//{
+//    Q_OBJECT
+//    bool eventFilter(QObject * watched, QEvent * event);
+//};
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT

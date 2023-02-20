@@ -23,8 +23,8 @@ MainWindow::MainWindow(QWidget *parent)
     DepartmentTextEdit = new QTextEdit;
     AgeLabel = new QLabel(tr("年龄："));
     AgeLineEdit = new QLineEdit;
-    OtherLabel = new QLabel(tr("年龄："));
-    OtherLabel->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+    OtherLabel = new QLabel(tr("其他："));
+    OtherLabel->setFrameStyle(QFrame::Panel | QFrame::Sunken); //设置控件的风格。 包括两种，阴影和形状 setFrameStyle
 
     LeftLayout = new QGridLayout;
     //用户名
@@ -81,14 +81,14 @@ MainWindow::MainWindow(QWidget *parent)
     OkBtn = new QPushButton(tr("确定"));
     CancelBtn = new QPushButton(tr("取消"));
     ButtomLayout = new QHBoxLayout;
-    ButtomLayout->addStretch();
+    ButtomLayout->addStretch(); //在按钮之前添加一个占位符
     ButtomLayout->addWidget(OkBtn);
     ButtomLayout->addWidget(CancelBtn);
 
 
     QGridLayout * mainLayout = new QGridLayout;
-    mainLayout->setMargin(15);
-    mainLayout->setSpacing(10);
+    mainLayout->setMargin(15); //设置对话框的边距为 15
+    mainLayout->setSpacing(10); //设置控件之前的间距
     mainLayout->addLayout(LeftLayout,0,0);
     mainLayout->addLayout(RightLayout, 0,1);
     mainLayout->addLayout(ButtomLayout,1,0,1,2);

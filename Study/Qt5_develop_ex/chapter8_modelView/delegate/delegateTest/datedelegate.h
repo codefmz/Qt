@@ -1,8 +1,8 @@
-#ifndef DATEDELEGATE_H
+﻿#ifndef DATEDELEGATE_H
 #define DATEDELEGATE_H
 
 #include <QItemDelegate>
-
+#include "QPainter"
 class DateDelegate : public QItemDelegate
 {
     Q_OBJECT
@@ -19,6 +19,9 @@ public:
     void setModelData(QWidget * editor, QAbstractItemModel * model, const QModelIndex & index) const;
     //更新控件的显示
     void updateEditorGeometry(QWidget * editor, const QStyleOptionViewItem & option, const QModelIndex & index) const;
+
+//    // painting
+    void paint(QPainter *painter,const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 
 };
 
