@@ -33,8 +33,9 @@ HEADERS += \
 FORMS += \
         widget.ui
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/include/ -lqwbatteryplugin
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/include/ -lqwbatteryplugind
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/ -lqwbatteryplugin
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/ -lqwbatteryplugind
 
 INCLUDEPATH += $$PWD/include
 DEPENDPATH += $$PWD/include

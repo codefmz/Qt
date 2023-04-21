@@ -20,7 +20,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QwBattery" name="battery"/>
+    <widget class="QwBattery" name="battery" native="true"/>
    </item>
    <item>
     <widget class="QSlider" name="horizontalSlider">

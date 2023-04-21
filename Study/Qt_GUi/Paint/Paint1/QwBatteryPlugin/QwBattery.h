@@ -3,8 +3,8 @@
 
 #include    <QWidget>
 #include    <QColor>
-
-class QDESIGNER_EXPORT_WIDGETS QwBattery : public QWidget
+#include   <QDesignerExportWidget>
+class QDESIGNER_WIDGET_EXPORT QwBattery : public QWidget
 {
     Q_OBJECT
 //自定义属性

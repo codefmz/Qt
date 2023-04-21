@@ -688,7 +688,7 @@ void MainWindow::realTimer()
 
     // setup a timer that repeatedly calls MainWindow::realtimeDataSlot:
     connect(&timer, SIGNAL(timeout()), this, SLOT(realtimeDataSlot()));
-    timer.start(50); // Interval 0 means to refresh as fast as possible
+    timer.start(5); // Interval 0 means to refresh as fast as possible
     connect(customPlot, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(mousePressSlot(QMouseEvent *)));
 
 

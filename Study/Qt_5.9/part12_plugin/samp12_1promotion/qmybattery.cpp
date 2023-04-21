@@ -3,7 +3,8 @@
 #include    <QPainter>
 
 void QmyBattery::paintEvent(QPaintEvent *event)
-{  //界面组件的绘制
+{
+    //界面组件的绘制
     Q_UNUSED(event);
 
     QPainter    painter(this);
@@ -13,7 +14,7 @@ void QmyBattery::paintEvent(QPaintEvent *event)
     painter.setRenderHint(QPainter::Antialiasing);
     painter.setRenderHint(QPainter::TextAntialiasing);
 
-//绘制电池边框
+    //绘制电池边框
     QPen    pen;//设置画笔
     pen.setWidth(2); //线宽
     pen.setColor(mColorBorder); //划线颜色
@@ -35,7 +36,7 @@ void QmyBattery::paintEvent(QPaintEvent *event)
     rect.setRect(110,15,10,20);
     painter.drawRect(rect); //画电池正极头
 
-//画电池柱
+    //画电池柱
     if (mPowerLevel>mWarnLevel)
     {  //正常颜色电量柱
         brush.setColor(mColorPower); //画刷颜色
