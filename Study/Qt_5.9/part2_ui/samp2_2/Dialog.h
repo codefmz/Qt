@@ -4,7 +4,10 @@
 #include <QDialog>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class Dialog; }
+namespace Ui
+{
+class Dialog;
+}
 QT_END_NAMESPACE
 
 class Dialog : public QDialog
@@ -12,7 +15,7 @@ class Dialog : public QDialog
     Q_OBJECT
 
 public:
-    Dialog(QWidget *parent = nullptr);
+    Dialog(QWidget* parent = nullptr);
     ~Dialog();
 
 private slots:
@@ -20,8 +23,8 @@ private slots:
     void on_checkBox_2_clicked(bool checked);
     void on_checkBox_3_clicked(bool checked);
     void oncolorRadioButtonClicked();
-private:
-    Ui::Dialog *ui;
 
+private:
+    Ui::Dialog* ui;
 };
 #endif // DIALOG_H

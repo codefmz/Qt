@@ -1,0 +1,4 @@
+Tom,1977-06-06,Doctor,6000
+Jack,1999-08-05,Engineer,7000
+Alice,1978-04-06,Soldier,6000
+John,1998-09-09,Lawyer,7888
