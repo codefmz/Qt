@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/230.bmp</file>
+        <file>images/516.bmp</file>
+        <file>images/132.bmp</file>
+        <file>images/704.bmp</file>
+        <file>images/706.bmp</file>
+        <file>images/304.bmp</file>
+        <file>images/506.bmp</file>
+        <file>images/CN.jpg</file>
+        <file>images/timg2.jpg</file>
+    </qresource>
+    <qresource prefix="/qm">
+        <file>MultiLanguage_cn.qm</file>
+        <file>MultiLanguage_en.qm</file>
+    </qresource>
+</RCC>

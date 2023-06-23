@@ -47,8 +47,9 @@ void MainWindow::onDurationChanged(qint64 duration)
     int secs = duration / 1000; //秒
     int mins = secs / 60;       //分钟
     secs = secs % 60;           //余数秒
-    durationTime = QString::asprintf("%d:%d", mins, secs);
-    ui->LabRatio->setText(positionTime + "/" + durationTime);
+    durationTime = tr("%1:%2").arg(mins).arg(secs);
+//    ui->LabRatio->setText(positionTime + "/" + durationTime);
+    ui->LabRatio->setText(tr("%1/%2").arg(positionTime).arg(durationTime));
 }
 
 void MainWindow::onPositionChanged(qint64 position)
@@ -63,15 +64,15 @@ void MainWindow::onPositionChanged(qint64 position)
     int secs = position / 1000; //秒
     int mins = secs / 60;       //分钟
     secs = secs % 60;           //余数秒
-    positionTime = QString::asprintf("%d:%d", mins, secs);
-    ui->LabRatio->setText(positionTime + "/" + durationTime);
+    positionTime =  tr("%1:%2").arg(mins).arg(secs);
+    ui->LabRatio->setText(tr("%1/%2").arg(positionTime).arg(durationTime));
 }
 
 void MainWindow::on_btnAdd_clicked()
 {                                                                                                                      //添加文件
     QString     curPath = QDir::homePath();                                                                            //获取系统当前目录
-    QString     dlgTitle = "选择音频文件";                                                                             //对话框标题
-    QString     filter = "音频文件(*.mp3 *.wav *.wma);;mp3文件(*.mp3);;wav文件(*.wav);;wma文件(*.wma);;所有文件(*.*)"; //文件过滤器
+    QString     dlgTitle = tr("选择音频文件");                                                                             //对话框标题
+    QString     filter = tr("音频文件(*.mp3 *.wav *.wma);;mp3文件(*.mp3);;wav文件(*.wav);;wma文件(*.wma);;所有文件(*.*)"); //文件过滤器
     QStringList fileList = QFileDialog::getOpenFileNames(this, dlgTitle, curPath, filter);
 
     if (fileList.empty())
@@ -135,9 +136,9 @@ void MainWindow::on_btnSound_clicked()
     bool mute = player->isMuted();
     player->setMuted(!mute);
     if (mute)
-        ui->btnSound->setIcon(QIcon(":/images/images/volumn.bmp"));
+        ui->btnSound->setIcon(QIcon(tr(":/images/images/volumn.bmp")));
     else
-        ui->btnSound->setIcon(QIcon(":/images/images/mute.bmp"));
+        ui->btnSound->setIcon(QIcon(tr(":/images/images/mute.bmp")));
 }
 
 void MainWindow::on_sliderPosition_valueChanged(int value)
@@ -166,7 +167,7 @@ void MainWindow::on_btnRemove_clicked()
         else
         {
             player->stop();
-            ui->LabCurMedia->setText("无曲目");
+            ui->LabCurMedia->setText(tr("无曲目"));
         }
     }
     else

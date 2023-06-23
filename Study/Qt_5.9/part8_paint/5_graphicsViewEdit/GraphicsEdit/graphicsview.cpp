@@ -1,4 +1,4 @@
-#include "graphicsview.h"
+﻿#include "graphicsview.h"
 
 GraphicsView::GraphicsView(QWidget *parent)
     : QGraphicsView{parent}
@@ -28,10 +28,9 @@ void GraphicsView::mousePressEvent(QMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton)
     {
-        QPoint point = event->pos();
+            QPoint point = event->pos();
         emit mouseClicked(point);
     }
     QGraphicsView::mousePressEvent(event);
 }
-
 

@@ -35,6 +35,9 @@ FORMS    += mainwindow.ui
 RESOURCES += \
     res.qrc
 
+TRANSLATIONS = MediaPlayer_cn.ts\
+            MediaPlayer_en.ts
+
 RC_ICONS = music.ico
 
 msvc:QMAKE_CXXFLAGS += -execution-charset:utf-8
