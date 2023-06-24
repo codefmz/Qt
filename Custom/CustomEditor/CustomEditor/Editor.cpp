@@ -16,7 +16,6 @@ PlainTextEdit::PlainTextEdit(QWidget* parent)
                   "selection-background-color:#3399FF;"
                   "selection-color: white;"
                   "border: 1px solid gray;}");
-
     QTextDocument* pTextDocument = document();
     //文本距离上下左右的边距
     pTextDocument->setDocumentMargin(2);
@@ -30,7 +29,7 @@ PlainTextEdit::PlainTextEdit(QWidget* parent)
     mpLineNumberArea = new LineNumberArea(this);
     connect(this, SIGNAL(blockCountChanged(int)), this, SLOT(updateLineNumberAreaWidth(int)));
     connect(this, SIGNAL(updateRequest(QRect, int)), this, SLOT(updateLineNumberArea(QRect, int)));
-    updateLineNumberAreaWidth(0);
+    updateLineNumberAreaWidth(0); //设置TextEdit的左间距，给行号窗体提供空间
     setLineWrapMode(QPlainTextEdit::WidgetWidth); //设置换行模式
 
     //功能2：自动补全
@@ -49,7 +48,7 @@ PlainTextEdit::PlainTextEdit(QWidget* parent)
     connect(mpCompleter, SIGNAL(highlighted(QModelIndex)), this, SLOT(showCompletionItemToolTip(QModelIndex)));
     connect(mpCompleter, SIGNAL(activated(QModelIndex)), this, SLOT(insertCompletionItem(QModelIndex)));
 
-    //===============
+    //功能3：
     connect(this, SIGNAL(undoAvailable(bool)), SLOT(setUndoAvailable(bool)));
     connect(this, SIGNAL(redoAvailable(bool)), SLOT(setRedoAvailable(bool)));
     connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(updateHighlights()));
@@ -176,8 +175,8 @@ void PlainTextEdit::insertCompletionItem(const QModelIndex& index)
 
 void PlainTextEdit::updateHighlights()
 {
-    QList<QTextEdit::ExtraSelection> selection1;
-    setExtraSelections(selection1);
+    QList<QTextEdit::ExtraSelection> emptySelect;
+    setExtraSelections(emptySelect);
     QList<QTextEdit::ExtraSelection> selections = extraSelections();
     QTextEdit::ExtraSelection        selection;
     QColor                           lineColor = QColor(232, 242, 254);
