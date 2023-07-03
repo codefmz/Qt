@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/wallhaven-1ppv8v.png</file>
+        <file>image/wallhaven-5gygv3.jpg</file>
+        <file>image/wallhaven-9ddqjw.png</file>
+        <file>image/wallhaven-kxxjgq.png</file>
+        <file>image/wallhaven-yxqx6k.jpg</file>
+        <file>image/wallhaven-yxx2k7_2560x1080.png</file>
+    </qresource>
+</RCC>
