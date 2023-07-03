@@ -13,9 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
+        FixedCheckBox.cpp \
         widget.cpp
 
-HEADERS  += widget.h
+HEADERS  += widget.h \
+    FixedCheckBox.h
 
 FORMS    += widget.ui
 

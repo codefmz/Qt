@@ -2,11 +2,10 @@
 
 #include <QApplication>
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
-    w.setWindowIcon(QIcon(":/Resources/icons/edit.ico"));
-    w.show();
+//    MainWindow::instance()->setWindowIcon(QIcon(":/Resources/icons/edit.ico"));
+    MainWindow::instance()->show();
     return a.exec();
 }

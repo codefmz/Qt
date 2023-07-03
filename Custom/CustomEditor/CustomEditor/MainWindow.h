@@ -10,12 +10,14 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    static MainWindow* instance();
+private:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
-
-private:
     void createActions();
 
+public slots:
+    void handleCanUndoChanged(bool enable);
 protected:
     //    void paintEvent(QPaintEvent* event);
 

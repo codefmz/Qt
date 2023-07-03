@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Resources/icons/edit.ico</file>
+        <file>Resources/icons/edit.svg</file>
+        <file>Resources/icons/redo.svg</file>
+        <file>Resources/icons/undo.svg</file>
+        <file>Resources/icons/zoomIn.svg</file>
+        <file>Resources/icons/zoomOut.svg</file>
+        <file>Resources/icons/zoomReset.svg</file>
+    </qresource>
+</RCC>

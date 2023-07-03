@@ -57,8 +57,37 @@
 ## 功能介绍
 
 1. 给定URL下载文件到指定目录
+
+   ```c++
+    //1. 解析urlSpec 字符串到Url
+   QUrl newUrl = QUrl::fromUserInput(urlSpec); 
+   //2.  检查是uRL是否有效   
+   if (!newUrl.isValid())
+     {
+      QMessageBox::information(this, "错误", QString("无效URL: %1 \n 错误信息: %2").arg(urlSpec, 	               newUrl.errorString()));
+           return;
+    }
+   //3.发送请求
+   networkManager.setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
+   QNetworkReply   reply = networkManager.get(QNetworkRequest(newUrl));
+   //4.信号槽连接
+   //响应完成
+   connect(reply, SIGNAL(finished()), this, SLOT(on_finished()));
+   //开始响应
+   connect(reply, SIGNAL(readyRead()), this, SLOT(on_readyRead()));
+   //进度条
+   connect(reply, SIGNAL(downloadProgress(qint64, qint64)), this, SLOT(on_downloadProgress(qint64, qint64)));
+   ```
+
 2. 检测下载进度，使用工具条显示
+
 3. 下载完成后，使用默认工具打开文件
+
+
+
+
+
+
 
 ## 遇到的问题
 
@@ -78,3 +107,4 @@
 3. 将安装过程中的动态库文件复制到``exe`所在的文件夹
 
 ​	![image-20230611001546724](./assets/image-20230611001546724.png)
+

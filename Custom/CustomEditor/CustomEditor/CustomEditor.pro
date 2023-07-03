@@ -30,7 +30,7 @@ RCC_DIR = generatedfiles/rcc
 RESOURCES += \
     res.qrc
 
-ICON = Resources/icons/edit.ico
+RC_ICONS = Resources/icons/edit.ico
 
 msvc:QMAKE_CXXFLAGS += -execution-charset:utf-8
 msvc:QMAKE_CXXFLAGS += -source-charset:utf-8

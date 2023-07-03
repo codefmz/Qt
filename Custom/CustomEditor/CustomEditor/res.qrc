@@ -7,5 +7,7 @@
         <file>Resources/icons/zoomIn.svg</file>
         <file>Resources/icons/zoomOut.svg</file>
         <file>Resources/icons/zoomReset.svg</file>
+        <file>Resources/icons/breakpoint_disabled.svg</file>
+        <file>Resources/icons/breakpoint_enabled.svg</file>
     </qresource>
 </RCC>

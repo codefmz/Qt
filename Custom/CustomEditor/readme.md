@@ -22,7 +22,7 @@
 
 ---
 
-## 2. 字体放大缩小重置
+## 2. 字体放大、缩小、重置
 
 - 因为需要字体大小可控，所以没有用`QPlainTextEdit` 提供的`zoomIn`等方法，而是自己在 继承类提供了字体变化的方法
 
@@ -142,7 +142,7 @@
 
 ## 7.自定义Tab缩进
 
-- 设置tab应该替代的空格数
+- 设置tab应该替代的空格数， 使用自定义空格数替代 tab
 
   ```c++
       if (pEvent->key() == Qt::Key_Tab || pEvent->key() == Qt::Key_Backtab)
@@ -153,13 +153,81 @@
       }
   ```
 
+## 8.撤销、重做
+
+- 信号槽
+
+  ```c++
+  setPlainText(""); //必须设置文本，后面的 connect 才能生效
+  connect(mplainTextEdit->document(), SIGNAL(redoAvailable(bool)),this, SLOT(handleCanUndoChanged(bool)));
+  connect(mplainTextEdit->document(), SIGNAL(undoAvailable(bool)), this, SLOT(handleCanUndoChanged(bool)));
+  ```
+
+## 9.调试断点
+
+- 光标进入可以打断点处，光标状态变化
+
+  ```c++
+      bool handCursor = (event->pos().x() <= breakPointWidth);
+      if (handCursor != (mpLineNumberArea->cursor().shape() == Qt::PointingHandCursor))
+      {
+          mpLineNumberArea->setCursor(handCursor ? Qt::PointingHandCursor : Qt::ArrowCursor);
+      }
+  ```
+
+- 断点架构
+
+  ![image-20230703100247746](./assets/image-20230703100247746.png)
+
+- 鼠标移动事件
+
+  ```c++
+  virtual void mouseMoveEvent(QMouseEvent* event) override
+  {
+      mpEidtor->lineNumberAreaMouseEvent(event);
+  }
+  ```
+
+- 光标点击
+
+  ```c++
+  if ((event->type() == QEvent::MouseButtonPress || event->type() == QEvent::MouseButtonDblClick) && (event->pos().x() <= breakPointWidth))
+          {
+              /* Do not allow breakpoints if file is not saved. */
+              int lineNumber = cursor.blockNumber() + 1;
+              if (event->button() == Qt::LeftButton)
+              { //! left clicked: add/remove breakpoint
+                  toggleBreakpoint("", lineNumber);
+              }
+          }
+  ```
+
+  
+
+## 10.代码折叠
+
+- 折叠识别
+
+  ```c++
+  void TextHighlighter::highlightMultiLine(const QString& text)
+  ```
+
+- 绘制折叠图形
+
+  ```c++
+  void PlainTextEdit::paintEvent(QPaintEvent* e)
+  ```
+
+- 点击折叠
+
+  ```c++
+  void PlainTextEdit::lineNumberAreaMouseEvent(QMouseEvent* event)
+  ```
+
 ---
 
 # 待实现的功能
 
-1. 代码折叠
-2. undo redo action
-3. 调试断点
-4. 按住 ctrl +  光标，文本跳转事件
-5. 文本补全辅助窗口
-6. 文本格式化
+1. 按住 ctrl +  光标，文本跳转事件
+2. 文本补全辅助窗口
+3. 文本格式化
